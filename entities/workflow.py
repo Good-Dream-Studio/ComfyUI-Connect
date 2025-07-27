@@ -186,7 +186,7 @@ class Workflow(dict):
                 continue
 
             # Remove the node from the workflow
-            print(f"⚡ Bypassing node {skip_node["class_type"]} (id {skip_node_id})")
+            print(f"⚡ Bypassing node {skip_node['class_type']} (id {skip_node_id})")
             del self[skip_node_id]
 
             # Reference all inputs wires that connects this node
@@ -204,14 +204,14 @@ class Workflow(dict):
                         if input_value[0] == skip_node_id:
                             if lowerSingular(input_name) in input_wires:
                                 print(
-                                    f"⚡ In {ref_node["class_type"]} (id {ref_node_id}), input {input_name} is now using wire {input_wires[lowerSingular(input_name)]}"
+                                    f"⚡ In {ref_node['class_type']} (id {ref_node_id}), input {input_name} is now using wire {input_wires[lowerSingular(input_name)]}"
                                 )
                                 ref_node["inputs"][input_name] = input_wires[
                                     lowerSingular(input_name)
                                 ]
                             else:
                                 print(
-                                    f"⚡ Could not find wire for {input_name} in {ref_node["class_type"]} (id {ref_node_id})"
+                                    f"⚡ Could not find wire for {input_name} in {ref_node['class_type']} (id {ref_node_id})"
                                 )
 
     @staticmethod

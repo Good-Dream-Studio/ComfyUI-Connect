@@ -29,8 +29,8 @@ app.registerExtension({
       icon: "pi pi-bolt",
       function: async () => {
         let name = app.graph.extra?.comfy_connect?.name ?? "";
-
-        name = await app.extensionManager.dialog.prompt({
+        const promptDialog = app.extensionManager?.dialog?.prompt ?? app.dialogService?.prompt ?? (({ message, defaultValue }) => Promise.resolve(window.prompt(message, defaultValue)));
+        name = await promptDialog({
           title: "Endpoint Name",
           message: "Type the endpoint name",
           defaultValue: name,
