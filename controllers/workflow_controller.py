@@ -39,8 +39,11 @@ class WorkflowController:
             params = await request.json()
             name = request.match_info["name"]
 
+            # Extract token from payload if provided
+            override_token = params.pop("_token", None)  # Remove _token from params
+            
             connect_print(f"POST /connect/workflows/{name} - Running workflow ...")
-            result = await self.service.execute_workflow(name, params)
+            result = await self.service.execute_workflow(name, params, override_token)
             return web.json_response({"status": "success", "workflow": name, "result": result})
 
         @server.PromptServer.instance.routes.get("/connect/workflow/cache_nodes")
