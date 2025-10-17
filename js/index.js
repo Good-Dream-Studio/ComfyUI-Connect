@@ -16,6 +16,11 @@ app.registerExtension({
       type: "text",
     },
     {
+      id: "Connect.ComfyUIToken",
+      name: "ComfyUI Authentication Token",
+      type: "text",
+    },
+    {
       id: "Connect.GatewayEndpoint",
       name: "ComfyUI Gateway Endpoint",
       type: "text",
